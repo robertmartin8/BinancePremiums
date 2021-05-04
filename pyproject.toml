@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "BinancePremiums"
+version = "0.1.0"
+description = ""
+authors = ["robertmartin8 <martin.robertandrew@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.2.4"
+numpy = "^1.20.2"
+python-binance = "^1.0.3"
+streamlit = "^0.81.0"
+
+[tool.poetry.dev-dependencies]
+ipython = "^7.23.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
