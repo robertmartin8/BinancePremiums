@@ -14,22 +14,22 @@ def markdown_content(filename):
 
 
 # Modify streamlit code
-code = """<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-XXXXXXXXX');
-</script>"""
+# code = """<!-- Global site tag (gtag.js) - Google Analytics -->
+# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX"></script>
+# <script>
+#   window.dataLayer = window.dataLayer || [];
+#   function gtag(){dataLayer.push(arguments);}
+#   gtag('js', new Date());
+#   gtag('config', 'UA-XXXXXXXXX');
+# </script>"""
 
-index_file = os.path.dirname(st.__file__) + "/static/index.html"
-with open(index_file, "r") as f:
-    data = f.read()
-    if len(re.findall("UA-", data)) == 0:
-        with open(index_file, "w") as ff:
-            newdata = re.sub("<head>", "<head>" + code, data)
-            ff.write(newdata)
+# index_file = os.path.dirname(st.__file__) + "/static/index.html"
+# with open(index_file, "r") as f:
+#     data = f.read()
+#     if len(re.findall("UA-", data)) == 0:
+#         with open(index_file, "w") as ff:
+#             newdata = re.sub("<head>", "<head>" + code, data)
+#             ff.write(newdata)
 
 js_file_dir = os.path.dirname(st.__file__) + "/static/static/js"
 js_file = [
