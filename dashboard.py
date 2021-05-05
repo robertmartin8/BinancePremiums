@@ -15,12 +15,12 @@ def markdown_content(filename):
 
 # Modify streamlit code
 code = """<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-G-MZ1Z0ZNKDE"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-G-0Y175Y9Y6G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-G-MZ1Z0ZNKDE');
+  gtag('config', 'UA-G-0Y175Y9Y6G');
 </script>"""
 
 index_file = os.path.dirname(st.__file__) + "/static/index.html"
