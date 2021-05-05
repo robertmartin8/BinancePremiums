@@ -20,7 +20,7 @@ code = """<!-- Global site tag (gtag.js) - Google Analytics -->
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-XXXXXXXXX');
+  gtag('config', 'UA-G-MZ1Z0ZNKDE');
 </script>"""
 
 index_file = os.path.dirname(st.__file__) + "/static/index.html"
