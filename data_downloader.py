@@ -43,7 +43,7 @@ def get_fut_symbols():
     return fut_symbols, perp_symbols
 
 
-@st.cache()
+@st.cache(allow_output_mutation=True)
 def get_coin_fut_premiums(timestamp=None):
     r = requests.get("https://dapi.binance.com/dapi/v1/premiumIndex")
     d = r.json()
@@ -72,26 +72,25 @@ def get_coin_fut_premiums(timestamp=None):
         "Pair",
         "Future Price",
         "Spot Price",
-        "Time to Expiry",
+        "Expiry",
         "Premium",
-        "Annualised Premium",
+        "Premium (ann.)",
     ]
 
     df_styled = df.style.format(
         {
             "Future Price": "{:.3f}",
             "Spot Price": "{:.3f}",
-            "Time to Expiry": "{} days",
+            "Expiry": "{} days",
             "Premium": "{:.2%}",
-            "Annualised Premium": "{:.2%}",
+            "Premium (ann.)": "{:.2%}",
         }
     )
     return df_styled
 
 
-@st.cache()
+@st.cache(allow_output_mutation=True)
 def get_coin_perp_funding(timestamp=None):
-
     fut_info = client.futures_coin_exchange_info()
     perp_symbols = [
         c["symbol"]

@@ -2,8 +2,9 @@
 
 There are several risks to think about before putting on these types of trades:
 
--   Exchange risk - if the exchange or your account gets hacked, who knows what will happen to the futures contracts.
--   Liquidation risk - possible that if a future gaps up and spot doesn't move you will get liquidated. This is very unlikely, but crazy things happens in the crypto markets.
--   Implementation risk - when putting on these trades, I have accidentally used 20x leverage instead of 1x (Binance puts 20x at the default). If I hadn't immediately realised this, I could have lost my entire margin balance on an up-move (another reason why isolated margin is important).
--   Annualising can often be deceptive. There is no guarantee that this premium will exist in 6 months when your trade expires.
--   The data shown here does not account for fees, spread, or slippage. These matter especially if you are trading in and out of perpetuals hoping to constantly roll to the best yielding perp.
+-   **Exchange security** – if the exchange or your account gets hacked, who knows what will happen to the futures contracts.
+-   **Exchange credit risk** – if the crypto pair gaps down, the profitability of the trade depends on your short futures leg. If for whatever reason the exchange is not able to fulfil this, you may experience material loss of capital. This is partially mitigated by the existence of [insurance funds](https://www.binance.com/en/support/faq/360033525371).
+-   **Liquidation risk** – it is possible that if a future gaps up and spot doesn't move you will get liquidated (as your account would momentarily show a large negative balance). This is unlikely (particularly using coin-margined futures), but crazy things do happen in the crypto markets.
+-   **Implementation risk** – by default, Binance futures trade at 20x leverage with cross-margin. This should be changed to 1x leverage and isolated margin to minimise risk. If you accidentally leave it at 20x leverage (which I have done several times in the past) and crypto prices have a big up move, your entire margin balance may be liquidated.
+-   **Annualised returns can often be deceptive** – there is no guarantee that a given premium will exist when you try to roll it (whether that is within 8 hours time for perps, or 6 months time for a delivery future).
+-   The data shown here **does not account for fees, spread, or slippage**. These matter especially if you are trading in and out of perpetuals hoping to constantly roll to the best yielding perp.
