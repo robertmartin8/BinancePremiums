@@ -43,7 +43,7 @@ def get_fut_symbols():
     return fut_symbols, perp_symbols
 
 
-@st.cache(ttl=300, allow_output_mutation=True)
+@st.cache(ttl=310, allow_output_mutation=True)
 def get_coin_fut_premiums(timestamp=None):
     r = requests.get("https://dapi.binance.com/dapi/v1/premiumIndex")
     d = r.json()
@@ -89,7 +89,7 @@ def get_coin_fut_premiums(timestamp=None):
     return df_styled
 
 
-@st.cache(ttl=300, allow_output_mutation=True)
+@st.cache(ttl=310, allow_output_mutation=True)
 def get_coin_perp_funding(timestamp=None):
     fut_info = client.futures_coin_exchange_info()
     perp_symbols = [
