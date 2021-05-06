@@ -14,4 +14,4 @@ In this example (purely educational), we show how one might take advantage of a 
 
 Having put this position on, you will receive the funding rate every 8 hours.
 
-<span style="color: red">**Warning:**</span> the funding rate can vary significantly. If you put on the above trade when the funding positive, but later on the funding becomes negative, you will be _paying_ to put the position on. To profit in this scenario, you would have to go short spot and long the future.
+<span style="color: red">**Warning:**</span> the funding rate can vary significantly. If you put on the above trade when the funding is positive, but 8h later the funding becomes negative, you will be _paying_ to put the position on. As a result, one may wish to look for contracts whose funding rates have been consistently high over a longer time period (e.g by looking at the 30d avg funding).

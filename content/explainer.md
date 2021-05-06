@@ -7,6 +7,5 @@ The standard narrative is that there is huge demand for leverage in crypto, push
 For further reading, consider the following resources:
 
 -   [Tweet thread](https://twitter.com/choffstein/status/1388487872508874753?s=20) by Corey Hoffstein exploring the risks.
--   [Medium post](https://cryptohayes.medium.com/all-aboard-4d50435190d6) by Arthur Hayes (CEO of BitMex), discussing several derivatives trades in crypto.
-
-If you are keen on putting on these trades, you need to become familiar with how Binance calculates collateral/funding and think about the situations in which you can get liquidated. Which leads me to...
+-   [Medium post](https://cryptohayes.medium.com/all-aboard-4d50435190d6) by Arthur Hayes (CEO of BitMex) – a long read with an in-depth discussion of several derivatives trades in crypto. An excellent resource if you've got an hour and a cup of coffee.
+-   [Binance FAQs](https://www.binance.com/en/support/faq/#/4) – explains the nitty-gritty details of how margin is calculated, when liquidation occurs, etc. This is a must-read if you are serious about putting on futures trades.
