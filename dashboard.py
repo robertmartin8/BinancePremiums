@@ -2,7 +2,6 @@ import time
 from datetime import datetime as dt
 import os
 import re
-from binance.client import Client
 import streamlit as st
 from streamlit import caching
 from data_downloader import get_coin_fut_premiums, get_coin_perp_funding
@@ -50,7 +49,6 @@ markdown_content("explainer")
 markdown_content("risks")
 markdown_content("about")
 
-cl = Client()
 RELOAD_INTERVAL_MINS = 5
 counter = 0
 while True:
@@ -58,11 +56,11 @@ while True:
     caching.clear_cache()
     error_message = "Error loading data. Please refresh the page or try again later."
     try:
-        delivery_premiums_table.dataframe(get_coin_fut_premiums(cl, timestamp))
+        delivery_premiums_table.dataframe(get_coin_fut_premiums(timestamp))
     except:
         delivery_premiums_table.error(error_message)
     try:
-        perp_funding_table.dataframe(get_coin_perp_funding(cl, timestamp))
+        perp_funding_table.dataframe(get_coin_perp_funding(timestamp))
     except:
         perp_funding_table.error(error_message)
 

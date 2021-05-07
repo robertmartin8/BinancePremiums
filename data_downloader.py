@@ -2,11 +2,12 @@ import streamlit as st
 from datetime import datetime as dt
 import pandas as pd
 import requests
+from binance.client import Client
+
+client = Client()
 
 
-def get_coin_fut_symbols(
-    client,
-):
+def get_coin_fut_symbols():
     """
     Symbols for coin-margined delivery
     """
@@ -24,9 +25,7 @@ def get_coin_fut_symbols(
     return fut_symbols, perp_symbols
 
 
-def get_fut_symbols(
-    client,
-):
+def get_fut_symbols():
     fut_info = client.futures_exchange_info()
     fut_symbols = [
         c["symbol"]
@@ -42,7 +41,7 @@ def get_fut_symbols(
 
 
 @st.cache(ttl=310, allow_output_mutation=True)
-def get_coin_fut_premiums(client, timestamp=None):
+def get_coin_fut_premiums(timestamp=None):
     r = requests.get("https://dapi.binance.com/dapi/v1/premiumIndex")
     d = r.json()
     df = pd.DataFrame(d)
@@ -88,7 +87,7 @@ def get_coin_fut_premiums(client, timestamp=None):
 
 
 @st.cache(ttl=310, allow_output_mutation=True)
-def get_coin_perp_funding(client, timestamp=None):
+def get_coin_perp_funding(timestamp=None):
     fut_info = client.futures_coin_exchange_info()
     perp_symbols = [
         c["symbol"]
