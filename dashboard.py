@@ -49,12 +49,12 @@ markdown_content("explainer")
 markdown_content("risks")
 markdown_content("about")
 
+error_message = "Error loading data. Please refresh the page or try again later."
 RELOAD_INTERVAL_MINS = 5
 counter = 0
 while True:
     timestamp = dt.utcnow()
     caching.clear_cache()
-    error_message = "Error loading data. Please refresh the page or try again later."
     try:
         delivery_premiums_table.dataframe(get_coin_fut_premiums(timestamp))
     except:
