@@ -32,6 +32,7 @@ st.markdown(
 )
 
 markdown_content("intro")
+
 markdown_content("futures_premiums1")
 
 delivery_premiums_table = st.empty()
