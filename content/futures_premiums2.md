@@ -23,7 +23,7 @@ You are now long BNB spot and short the BNB future, with no exposure to the move
 
 Suppose BNB is currently trading at $500 and the future is trading at $600, a 20% premium. We buy 1 BNB and put it in our margin account, then short $500 worth of the BNB future at 1x leverage.
 
--   Case 1: BNB appreciates to $750 by expiry. We make a **profit of $250** ($750 - $250) on the long spot position and a **loss of $150** ($750 - $600) on the short future.
+-   Case 1: BNB appreciates to $750 by expiry. We make a **profit of $250** ($750 - $500) on the long spot position and a **loss of $150** ($750 - $600) on the short future.
 -   Case 2: BNB sells off to $300 by expiry. We make a **loss of $200** ($500 - $300) on the long spot position and a **gain of $300** ($600 - $300) on the short future.
 
 In both cases, we make **$100 profit on a $500 position**, locking in the 20% premium we observed.
