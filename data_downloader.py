@@ -53,9 +53,9 @@ def get_coin_fut_premiums(timestamp=None):
     df["exp"] = pd.to_datetime(df.exp, format="%y%m%d").map(
         lambda x: dt(x.year, x.month, x.day, 8)
     )
-    time_to_expiry = df.exp - dt.utcnow()
-    compound = 365 * 24 * 3600 / (time_to_expiry.dt.total_seconds())
-    df["dte"] = time_to_expiry.dt.days
+    seconds_to_expiry = (df.exp - dt.utcnow()).dt.total_seconds()
+    compound = 365 * 24 * 3600 / seconds_to_expiry
+    df["dte"] = seconds_to_expiry / (24 * 3600)
     df["premium"] = df.markPrice / df.indexPrice - 1
     df["premium_ann"] = (1 + df.premium) ** compound - 1
     df = (
@@ -78,7 +78,7 @@ def get_coin_fut_premiums(timestamp=None):
         {
             "Future Price": "{:.3f}",
             "Spot Price": "{:.3f}",
-            "Expiry": "{} days",
+            "Expiry": "{:.1f} days",
             "Premium": "{:.2%}",
             "Premium (ann.)": "{:.2%}",
         }
