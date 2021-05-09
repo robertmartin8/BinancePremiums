@@ -54,10 +54,9 @@ def get_coin_fut_premiums(timestamp=None):
         lambda x: dt(x.year, x.month, x.day, 8)
     )
     seconds_to_expiry = (df.exp - dt.utcnow()).dt.total_seconds()
-    compound = 365 * 24 * 3600 / seconds_to_expiry
     df["dte"] = seconds_to_expiry / (24 * 3600)
     df["premium"] = df.markPrice / df.indexPrice - 1
-    df["premium_ann"] = (1 + df.premium) ** compound - 1
+    df["premium_ann"] = df.premium / (df.dte / 365)
     df = (
         df.drop("exp", axis=1)
         .sort_values(by="premium_ann", ascending=False)
@@ -128,7 +127,8 @@ def get_coin_perp_funding(timestamp=None):
     df["last"] = df1.reindex(df.symbol).values
 
     # Annualise
-    df.iloc[:, 1:] = (1 + df.iloc[:, 1:]) ** (365 * 3) - 1
+    df.iloc[:, 1:] = df.iloc[:, 1:] * 3 * 365
+
     df = df.sort_values(by="last", ascending=False).reset_index(drop=True)
 
     # Clean up and style
