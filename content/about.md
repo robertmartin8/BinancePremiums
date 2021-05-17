@@ -7,4 +7,6 @@ If you found this site useful, help me keep it running by sending a tip:
 
 This site was heavily inspired by [ftxpremiums.com](https://ftxpremiums.com/) and was built using Streamlit.
 
+Thanks to [@therobotjames](https://twitter.com/therobotjames) and Alexis Marchal for their suggestions/corrections.
+
 For more of my work, please visit [reasonabledeviations.com](https://reasonabledeviations.com) or follow me on Twitter <a href="https://twitter.com/robertmartin88?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">@robertmartin88</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>.

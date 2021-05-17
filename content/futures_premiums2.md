@@ -21,7 +21,7 @@ This example explains how one might put on a carry trade for BNBUSD-0625 (purely
 
 You are now long BNB spot and short the BNB future, with no exposure to the movement of BNB (in principle). A worked example is as follows.
 
-Suppose BNB is currently trading at $500 and the future is trading at $600, a 20% premium. We buy 1 BNB and put it in our margin account, then short $500 worth of the BNB future at 1x leverage.
+Suppose BNB is currently trading at $500 and the future is trading at $600, a 20% premium. We buy 1 BNB and put it in our margin account, then short $600 worth of the BNB future at 1x leverage (i.e using 100% of our 1 BNB margin balance at 1x leverage).
 
 -   Case 1: BNB appreciates to $750 by expiry. We make a **profit of $250** ($750 - $500) on the long spot position and a **loss of $150** ($750 - $600) on the short future.
 -   Case 2: BNB sells off to $300 by expiry. We make a **loss of $200** ($500 - $300) on the long spot position and a **gain of $300** ($600 - $300) on the short future.
