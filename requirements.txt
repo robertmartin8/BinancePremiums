@@ -1,4 +1,4 @@
 pandas == 1.2.4
 numpy == 1.20.2
 python-binance == 1.0.3
-streamlit == 0.81.0
+streamlit == 0.82.0
