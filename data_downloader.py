@@ -41,6 +41,54 @@ def get_fut_symbols():
 
 
 @st.cache(ttl=310, allow_output_mutation=True)
+def get_usd_fut_premiums(timestamp=None):
+    r = requests.get("https://fapi.binance.com/fapi/v1/premiumIndex")
+    d = r.json()
+    df = pd.DataFrame(d)
+    df = df[df.symbol.str.contains("_")]
+    df[["pair", "exp"]] = df.symbol.str.split("_", n=1, expand=True)
+
+    df = df[["pair", "markPrice", "indexPrice", "exp"]]
+    df[["markPrice", "indexPrice"]] = df[["markPrice", "indexPrice"]].astype(float)
+
+    df["exp"] = pd.to_datetime(df.exp, format="%y%m%d").map(
+        lambda x: dt(x.year, x.month, x.day, 8)
+    )
+    seconds_to_expiry = (df.exp - dt.utcnow()).dt.total_seconds()
+    # compound = 365 * 24 * 3600 / seconds_to_expiry
+    df["dte"] = seconds_to_expiry / (24 * 3600)
+    df["premium"] = df.markPrice / df.indexPrice - 1
+    df["premium_ann"] = df.premium / (df.dte / 365)
+    # df["premium_ann"] = (1 + df.premium) ** compound - 1
+    df = (
+        df.drop("exp", axis=1)
+        .sort_values(by="premium_ann", ascending=False)
+        .reset_index(drop=True)
+    )
+
+    # Clean up and style
+    df.columns = [
+        "Pair",
+        "Future Price",
+        "Spot Price",
+        "Expiry",
+        "Premium",
+        "Premium (ann.)",
+    ]
+
+    df_styled = df.style.format(
+        {
+            "Future Price": "{:.3f}",
+            "Spot Price": "{:.3f}",
+            "Expiry": "{:.1f} days",
+            "Premium": "{:.2%}",
+            "Premium (ann.)": "{:.2%}",
+        }
+    )
+    return df_styled
+
+
+@st.cache(ttl=310, allow_output_mutation=True)
 def get_coin_fut_premiums(timestamp=None):
     r = requests.get("https://dapi.binance.com/dapi/v1/premiumIndex")
     d = r.json()
@@ -130,6 +178,61 @@ def get_coin_perp_funding(timestamp=None):
 
     # Annualise
     # df.iloc[:, 1:] = (1 + df.iloc[:, 1:]) ** (365 * 3) - 1
+    df.iloc[:, 1:] = df.iloc[:, 1:] * 3 * 365
+    df = df.sort_values(by="last", ascending=False).reset_index(drop=True)
+
+    # Clean up and style
+    df.columns = [
+        "Pair",
+        "Last",
+        "7d avg",
+        "14d avg",
+        "30d avg",
+    ]
+
+    df_styled = df.style.format(
+        {
+            "Last": "{:.2%}",
+            "7d avg": "{:.2%}",
+            "14d avg": "{:.2%}",
+            "30d avg": "{:.2%}",
+        }
+    )
+    return df_styled
+
+
+@st.cache(ttl=310, allow_output_mutation=True)
+def get_usd_perp_funding(timestamp=None):
+    r = requests.get("https://fapi.binance.com/fapi/v1/premiumIndex")
+    d = r.json()
+    perp_df = pd.DataFrame(d)
+    perp_df = perp_df[~perp_df.symbol.str.contains("_")]
+
+    perp_symbols = perp_df.symbol.tolist()
+
+    res = []
+    for symbol in perp_symbols:
+        d = client.futures_funding_rate(symbol=symbol)
+        funding_rates = [float(i["fundingRate"]) for i in d]
+        last = funding_rates[-1]
+        avg_7 = sum(funding_rates[-7 * 3 :]) / (7 * 3)
+        avg_14 = sum(funding_rates[-14 * 3 :]) / (14 * 3)
+        avg_30 = sum(funding_rates[-30 * 3 :]) / (30 * 3)
+        res.append((d[-1]["symbol"], last, avg_7, avg_14, avg_30))
+
+    df = pd.DataFrame(
+        res,
+        columns=[
+            "symbol",
+            "last",
+            "avg_7d",
+            "avg_14d",
+            "avg_30d",
+        ],
+    )
+
+    df["last"] = perp_df["lastFundingRate"].astype(float).values
+    # Annualise
     df.iloc[:, 1:] = df.iloc[:, 1:] * 3 * 365
     df = df.sort_values(by="last", ascending=False).reset_index(drop=True)
 

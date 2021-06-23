@@ -9,4 +9,4 @@ Instead, the economic link between the future and underlying is a result of **fu
 
 On Binance, this funding occurs once every 8 hours. Real-time funding rates can be found [here](https://www.binance.com/en/futures/funding-history/quarterly/0).
 
-The table below shows the **average annualised funding rates** for different coin-margined perpetual futures contracts on Binance.
+The table below shows the **average annualised funding rates** for different **perpetual futures contracts** on Binance.

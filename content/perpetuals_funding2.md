@@ -1,6 +1,6 @@
 ## Perpetual funding tutorial
 
-In this example (purely educational), we show how one might take advantage of a positive funding rate for DOGEUSD_PERP.
+In this example (purely educational), we show how one might take advantage of a positive funding rate for DOGEUSD_PERP. This example uses coin-margined contracts, but similar steps apply to USD-margined contracts.
 
 1. Register for a Binance account – using my [referral link](https://www.binance.com/en/register?ref=BN5UXJ7P) gives you 5% off fees.
 2. Deposit cash/crypto and buy DOGE spot.

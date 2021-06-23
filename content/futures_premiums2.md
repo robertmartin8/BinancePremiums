@@ -2,7 +2,7 @@
 
 ## Cash-and-Carry tutorial
 
-This example explains how one might put on a carry trade for BNBUSD-0625 (purely educational).
+This example explains how one might put on a carry trade for BNBUSD-0625 (purely educational). This example uses coin-margined contracts, but similar steps apply to USD-margined contracts.
 
 1. Register for a Binance account – using my [referral link](https://www.binance.com/en/register?ref=BN5UXJ7P) gives you 5% off fees.
 2. Deposit cash/crypto
