@@ -1,5 +1,8 @@
 # BinancePremiums
 
+![screenshot](assets/screenshot.png)
+
+
 BinancePremiums is a simple tool to track crypto spot-perp premia on Binance.
 
 -   `data_downloader.py` scrapes data from binance
