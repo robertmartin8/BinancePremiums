@@ -5,13 +5,20 @@
 
 BinancePremiums is a simple tool to track crypto spot-perp premia on Binance.
 
+You should be able to run the app as follows:
+
+```
+pip install -r requirements.txt
+streamlit run dashboard.py
+```
+
+##Structure
+
 -   `data_downloader.py` scrapes data from binance
 -   `dashboard.py` is the main dashboard
 -   `content/` for markdown files called by `dashboard`.
 
 I originally deployed this on heroku, but now they are killing the free plans so I am using Streamlit Cloud. 
-
-
 
 
 ## Heroku deployment
