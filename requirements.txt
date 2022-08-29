@@ -1,0 +1,4 @@
+streamlit==0.88
+pandas
+numpy 
+python-binance
